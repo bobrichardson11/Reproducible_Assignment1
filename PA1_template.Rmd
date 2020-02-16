@@ -1,0 +1,69 @@
+---
+title: "Assignment 1"
+author: "Robert Richardson"
+date: "1/26/2020"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+The first step is to load the data
+
+```{r}
+
+activity_data <- read.csv("activity.csv")
+head(activity_data)
+```
+
+What is the total number of steps taken per day?
+
+For this analysis, the missing values in the data set have been ignored. First we will show a histogram of the complete dataset.
+
+```{r}
+hist(activity_data$steps[activity_data$steps > 0], main = "Histogram of Steps Taken Daily", xlab = "Steps")
+```
+Next we calculate the mean and median values of the dataset 
+
+```{r}
+mean(activity_data$steps, na.rm = TRUE)
+median(activity_data$steps, na.rm = TRUE)
+```
+
+What is the daily activity pattern?
+
+```{r warning = FALSE}
+DailyPat <- aggregate(x=activity_data, by=list(activity_data$interval),                      FUN = mean, na.rm = TRUE)
+
+
+plot(DailyPat$interval, DailyPat$steps, type = "l", xlab = "Interval", ylab = "Steps")
+```
+
+How many rows contain NA?
+
+```{r}
+summary(activity_data)
+```
+
+Use the mice library to impute missing values
+```{r}
+library("mice")
+imp <- mice(activity_data, m=1)
+activity_data2 <- complete(imp)
+```
+Draw histgram and calculate mean and median
+```{r}
+hist(activity_data2$steps)
+mean(activity_data2$steps)
+median(activity_data2$steps)
+```
+
+Now we will see if the activity takes place on a weekday or weekend by creating a new factor variable.
+```{r}
+dayofweek <- weekdays(as.Date(activity_data2$date))
+activity_data_weekdays <- cbind(activity_data2, dayofweek)
+```
+
