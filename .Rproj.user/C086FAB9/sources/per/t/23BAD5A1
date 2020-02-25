@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1581897420745.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "298450729",
+    "id" : "23BAD5A1",
+    "lastKnownWriteTime" : 1582496519,
+    "last_content_update" : 1582496519558,
+    "path" : "~/Documents/Reproducible_Assignment1/PA1_template.Rmd",
+    "project_path" : "PA1_template.Rmd",
+    "properties" : {
+        "cursorPosition" : "66,0",
+        "last_setup_crc32" : "2FE92071bb338d19",
+        "scrollLine" : "58"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

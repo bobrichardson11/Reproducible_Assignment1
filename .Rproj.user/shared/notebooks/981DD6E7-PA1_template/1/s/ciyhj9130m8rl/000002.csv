@@ -1,0 +1,2 @@
+"0","setwd(""~/Documents/Reproducible_Assignment1"")"
+"0","activity_data <- read.csv(""activity.csv"")"
