@@ -1,6 +1,6 @@
 "0","mean(activity_data2$steps)"
 "1","[1]"
-"1"," 33.12688"
+"1"," 32.48924"
 "1","
 "
 "0","median(activity_data2$steps)"

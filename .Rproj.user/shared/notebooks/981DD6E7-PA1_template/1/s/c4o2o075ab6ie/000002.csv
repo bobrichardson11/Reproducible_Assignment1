@@ -1,4 +1,15 @@
 "0","library(""mice"")"
+"2","Loading required package: lattice
+"
+"2","
+Attaching package: ‘mice’
+
+"
+"2","The following objects are masked from ‘package:base’:
+
+    cbind, rbind
+
+"
 "0","imp <- mice(activity_data, m=1)"
 "1","
  iter imp variable"

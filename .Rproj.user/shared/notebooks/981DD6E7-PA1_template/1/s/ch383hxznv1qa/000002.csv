@@ -1,0 +1,5 @@
+"0","library(plyr)"
+"0","dayofweek <- weekdays(as.Date(activity_data2$date))"
+"0","activity_data_weekdays <- cbind(activity_data2, dayofweek)"
+"0","activity_data_weekdays$dayofweek <- ifelse(activity_data_weekdays$dayofweek %in% c(""Saturday"", ""Sunday""), ""Weekend"", ""Weekday"")"
+"0",""

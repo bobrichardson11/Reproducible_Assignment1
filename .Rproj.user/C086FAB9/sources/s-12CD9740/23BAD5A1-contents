@@ -3,13 +3,12 @@ title: "Assignment 1"
 author: "Robert Richardson"
 date: "1/26/2020"
 output:
-  html_document: default
+  html_document:
+     toc: true
   pdf_document: default
+  
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+## Load Data
 
 The first step is to load the data
 
@@ -17,6 +16,7 @@ The first step is to load the data
 setwd("~/Documents/Reproducible_Assignment1")
 activity_data <- read.csv("activity.csv")
 ```
+## Initial Analysis
 
 What is the total number of steps taken per day?
 
@@ -24,13 +24,21 @@ For this analysis, the missing values in the data set have been ignored. First w
 
 ```{r}
 hist(activity_data$steps[activity_data$steps > 0], main = "Histogram of Steps Taken Daily", xlab = "Steps")
+
+newdata <- na.omit(activity_data)
+
+ggplot(data = newdata,
+       aes(x = newdata$steps )) +
+         geom_histogram(binwidth = 25)
 ```
-Next we calculate the mean and median values of the dataset 
+
+     Next we calculate the mean and median values of the dataset 
 
 ```{r}
 mean(activity_data$steps, na.rm = TRUE)
 median(activity_data$steps, na.rm = TRUE)
 ```
+## Pattern of Daily Activity
 
 What is the daily activity pattern?
 
@@ -46,8 +54,9 @@ How many rows contain NA?
 ```{r}
 summary(activity_data)
 ```
+## Dealing with Missing Values
 
-Use the mice library to impute missing values
+We can use the mice library to impute missing values
 ```{r}
 library("mice")
 imp <- mice(activity_data, m=1)
@@ -61,12 +70,18 @@ median(activity_data2$steps)
 ```
 
 Now we will see if the activity takes place on a weekday or weekend by creating a new factor variable.
-```{r}
+```{r ECHO = FALSE}
+library(plyr)
 dayofweek <- weekdays(as.Date(activity_data2$date))
 activity_data_weekdays <- cbind(activity_data2, dayofweek)
+activity_data_weekdays$dayofweek <- ifelse(activity_data_weekdays$dayofweek %in% c("Saturday", "Sunday"), "Weekend", "Weekday")
 
-levels(activity_data_weekdays$dayofweek) <- c(activity_data_weekdays$dayofweek, "Weekend", "Weekday")
-replace(activity_data_weekdays$dayofweek, c("Saturday", "Sunday"), as.character("Weekend"))
-replace(activity_data_weekdays$day, c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday"), as.character("Weekend"))
+```
+Next we plot and look at the differences
+
+```{r}
+ggplot(data = activity_data_weekdays, aes(x=interval, y=steps, group=dayofweek)) +
+         geom_line()
+
 ```
 
