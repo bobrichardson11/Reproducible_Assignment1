@@ -1,0 +1,3 @@
+"0",""
+"0","newdata <- na.omit(activity_data)"
+"0","library(ggplot2)"
