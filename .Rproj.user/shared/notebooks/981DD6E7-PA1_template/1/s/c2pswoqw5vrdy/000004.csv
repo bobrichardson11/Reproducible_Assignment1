@@ -1,0 +1,7 @@
+"0",""
+"0","newdata <- na.omit(activity_data)"
+"0","newdata <- subset(newdata, steps > 0, select = steps)"
+"0","library(ggplot2)"
+"0","ggplot(data = newdata,"
+"0","       aes(x = newdata$steps )) +"
+"0","         geom_histogram(binwidth = 25)"

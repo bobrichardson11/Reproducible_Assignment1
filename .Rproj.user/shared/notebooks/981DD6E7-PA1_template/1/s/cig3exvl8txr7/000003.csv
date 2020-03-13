@@ -1,0 +1,4 @@
+"0","ggplot(data = activity_data_weekdays, aes(x=interval, y=steps)) +"
+"0","         geom_line() +"
+"0","  facet_wrap(~dayofweek)"
+"0",""

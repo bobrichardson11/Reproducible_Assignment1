@@ -1,0 +1,6 @@
+"0","dayofweek <- weekdays(as.Date(activity_data$date))
+activity_data_weekdays <- cbind(activity_data2, dayofweek)
+"
+"2","Error in data.frame(..., check.names = FALSE) : 
+  arguments imply differing number of rows: 4296, 17568
+"

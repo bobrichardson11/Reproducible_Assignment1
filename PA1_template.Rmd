@@ -10,7 +10,7 @@ output:
 ---
 ## Load Data
 
-The first step is to load the data
+First step is to load the data
 
 ```{r}
 setwd("~/Documents/Reproducible_Assignment1")
@@ -23,9 +23,9 @@ What is the total number of steps taken per day?
 For this analysis, the missing values in the data set have been ignored. First we will show a histogram of the complete dataset.
 
 ```{r}
-hist(activity_data$steps[activity_data$steps > 0], main = "Histogram of Steps Taken Daily", xlab = "Steps")
 
 newdata <- na.omit(activity_data)
+newdata <- subset(newdata, steps > 0, select = steps)
 library(ggplot2)
 ggplot(data = newdata,
        aes(x = newdata$steps )) +
@@ -64,6 +64,7 @@ activity_data2 <- complete(imp)
 ```
 Draw histgram and calculate mean and median
 ```{r}
+activity_data2 <- subset(activity_data2, steps > 0, select = steps)
 hist(activity_data2$steps)
 mean(activity_data2$steps)
 median(activity_data2$steps)
@@ -72,8 +73,8 @@ median(activity_data2$steps)
 Now we will see if the activity takes place on a weekday or weekend by creating a new factor variable.
 ```{r ECHO = FALSE}
 library(plyr)
-dayofweek <- weekdays(as.Date(activity_data2$date))
-activity_data_weekdays <- cbind(activity_data2, dayofweek)
+dayofweek <- weekdays(as.Date(activity_data$date))
+activity_data_weekdays <- cbind(activity_data, dayofweek)
 activity_data_weekdays$dayofweek <- ifelse(activity_data_weekdays$dayofweek %in% c("Saturday", "Sunday"), "Weekend", "Weekday")
 
 ```

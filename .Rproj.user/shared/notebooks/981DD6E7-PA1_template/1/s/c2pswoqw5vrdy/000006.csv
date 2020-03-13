@@ -1,1 +1,0 @@
-"0","hist(activity_data$steps[activity_data$steps > 0], main = ""Histogram of Steps Taken Daily"", xlab = ""Steps"")"

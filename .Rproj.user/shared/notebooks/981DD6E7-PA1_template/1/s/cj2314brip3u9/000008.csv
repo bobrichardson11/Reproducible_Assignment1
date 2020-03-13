@@ -1,0 +1,13 @@
+"0","activity_data2 <- subset(activity_data2, steps > 0, select = steps)
+hist(activity_data2$steps)
+mean(activity_data2$steps)
+"
+"1","[1]"
+"1"," 133.2686"
+"1","
+"
+"0","median(activity_data2$steps)"
+"1","[1]"
+"1"," 56"
+"1","
+"
